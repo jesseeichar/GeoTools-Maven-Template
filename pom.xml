@@ -18,14 +18,28 @@
         <geotools.version>9.1</geotools.version>
     </properties>
 
-
     <!-- =========================================================== -->
     <!--     Dependencies to be inherited by all modules.            -->
     <!-- =========================================================== -->
     <dependencies>
         <dependency>
             <groupId>org.geotools</groupId>
-            <artifactId>gt-graph</artifactId>
+            <artifactId>gt-shapefile</artifactId>
+            <version>${geotools.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.geotools</groupId>
+            <artifactId>gt-epsg-hsql</artifactId>
+            <version>${geotools.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.geotools</groupId>
+            <artifactId>gt-render</artifactId>
+            <version>${geotools.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.geotools</groupId>
+            <artifactId>gt-geotiff</artifactId>
             <version>${geotools.version}</version>
         </dependency>
         <dependency>
