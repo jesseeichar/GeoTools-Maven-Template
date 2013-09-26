@@ -72,19 +72,6 @@
     <!--     Build Configuration                                     -->
     <!-- =========================================================== -->
     <build>
-
-
-        <!-- ========================================================= -->
-        <!--   Maven plugins dependencies management.                  -->
-        <!--   It should not be needed since Maven select by default   -->
-        <!--   the latest plugins. Unfortunatly, experience shows that -->
-        <!--   new plugin releases sometime introduce new bugs that    -->
-        <!--   break our build. So it is saferto specify plugin        -->
-        <!--   versions that are known to work.  This list is in       -->
-        <!--   alphabetical order for easier comparaison with latest   -->
-        <!--   plugins at                                              -->
-        <!--   http://repo1.maven.org/maven2                           -->
-        <!-- ========================================================= -->
         <pluginManagement>
             <plugins>
                 <plugin>
@@ -192,10 +179,53 @@
         </plugins>
     </build>
 
+    <!-- ======================================================= -->
+    <!--     Repository containing Geotools dependencies.        -->
+    <!-- ======================================================= -->
     <repositories>
         <repository>
             <id>OpenGeo_Geotools</id>
             <url>http://download.osgeo.org/webdav/geotools/</url>
         </repository>
     </repositories>
+
+    <!-- ======================================================= -->
+    <!--     Extra static analysis plugins to run when testing.  -->
+    <!-- ======================================================= -->
+    <profiles>
+        <profile>
+            <id>run-static-analysis</id>
+            <activation>
+                <property>
+                    <name>!skipTests</name>
+                </property>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>findbugs-maven-plugin</artifactId>
+                        <configuration>
+                            <effort>Default</effort>
+                            <threshold>Default</threshold>
+                            <xmlOutput>true</xmlOutput>
+                            <xmlOutput>true</xmlOutput>
+                            <excludeFilterFile>findbugs-excludes.xml</excludeFilterFile>
+                            <debug>false</debug>
+                            <includeTests>false</includeTests>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <goals>
+                                    <goal>check</goal>
+                                </goals>
+                                <phase>test</phase>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+
 </project>
