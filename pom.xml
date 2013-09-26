@@ -9,7 +9,7 @@
     <!-- =========================================================== -->
     <groupId>com.camptocamp</groupId>
     <artifactId>template</artifactId>
-    <packaging>pom</packaging>
+    <packaging>jar</packaging>
     <version>1.0</version>
     <name>geotools template</name>
 
