@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<web-app xmlns="http://java.sun.com/xml/ns/j2ee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
+         version="2.4">
+
+    <display-name>geonetwork</display-name>
+
+    <filter>
+        <!--
+            WebResourceOptimizer is a WRO4J Filter (https://code.google.com/p/wro4j/wiki/Introduction)
+            which runs css and javascript linting, compiling, minification and compression.  We use it in two ways.
+
+            * Runtime as a Servlet Filter - at runtime WRO4J compiles, lints, minifies and compresses all javascript and css files.
+                                            This allows a developer to be able to get instant feed back when he/she changes a file.
+            * Maven build - The same configuration is run on all javascript files during build time.  The artifacts are ignored
+                            because they are generated at runtime but it a check to verify that when deployed all artifacts can be
+                            correctly built when the .
+        -->
+
+        <filter-name>WebResourceOptimizer</filter-name>
+            <filter-class>
+                ro.isdc.wro.http.WroFilter
+            </filter-class>
+        </filter>
+        <filter-mapping>
+            <filter-name>WebResourceOptimizer</filter-name>
+            <url-pattern>/static/*</url-pattern>
+        </filter-mapping>
+
+        <welcome-file-list>
+            <welcome-file>index.html</welcome-file>
+        </welcome-file-list>
+
+        <session-config>
+            <!-- 3 hours -->
+        <session-timeout>180</session-timeout>
+    </session-config>
+</web-app>
