@@ -1,0 +1,3 @@
+[submodule "chromedriver"]
+	path = chromedriver
+	url = git@github.com:geonetwork/chromedriver.git
