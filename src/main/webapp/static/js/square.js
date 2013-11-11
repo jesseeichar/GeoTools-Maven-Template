@@ -1,5 +1,3 @@
-(function() {
-    "use strict";
     function square(n){
         return n*n;
     }
@@ -11,4 +9,3 @@
     window['closureExportedFunctions'] = {
         'square': displaySquare
     };
-})();

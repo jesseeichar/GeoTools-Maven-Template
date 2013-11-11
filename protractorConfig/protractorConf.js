@@ -11,7 +11,7 @@ exports.config = {
   // 3. sauceUser/sauceKey - to use remote Selenium servers via SauceLabs.
 
   // The location of the selenium standalone server .jar file.
-  seleniumServerJar: '${project.basedir}/node_modules/selenium-server/lib/runner/selenium-server-standalone-2.35.0.jar',
+  seleniumServerJar: '${project.basedir}${file.separator}node_modules${file.separator}selenium-server${file.separator}lib${file.separator}runner${file.separator}selenium-server-standalone-2.35.0.jar',
   // Chromedriver location is used to help the selenium standalone server
   // find chromedriver.
   //
@@ -35,7 +35,7 @@ exports.config = {
   //
   // Spec patterns are relative to the location of this config.
   specs: [
-    '${project.basedir}/src/test/protractor/**/*_spec.js',
+    '${project.basedir}${file.separator}src${file.separator}test${file.separator}protractor${file.separator}**${file.separator}*_spec.js',
   ],
 
   // ----- Capabilities to be passed to the webdriver instance ----
